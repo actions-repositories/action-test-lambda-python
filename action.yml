@@ -1,15 +1,15 @@
 name: 'Pipeline test lambda python'
 description: 'test lambda python aws'
 inputs:
-  PATH_TO_REQUIREMENTS: 
-    description: 'Path to requirements.txt'
+  PATH_TO_ROOT: 
+    description: 'Path to root'
     required: true
 
 runs:
   using: "composite"
   steps:
     - name: Path to requirements.txt
-      run: echo ${{ inputs.PATH_TO_REQUIREMENTS }}.
+      run: echo ${{ inputs.PATH_TO_ROOT }}.
       shell: bash
     
     - name: Checkout
@@ -24,7 +24,7 @@ runs:
     - name: Install dependencies    
       run: |
         python -m pip install --upgrade pip
-        cd ${{ inputs.PATH_TO_REQUIREMENTS }}
+        cd ${{ inputs.PATH_TO_ROOT }}
         pip install -r requirements.txt    
       shell: bash
 
