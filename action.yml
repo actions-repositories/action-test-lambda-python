@@ -31,6 +31,7 @@ runs:
     - name: Run tests    
       run: |
         export PYTHONPATH=${{ inputs.PATH_TO_ROOT }}
+        cd ${{ inputs.PATH_TO_ROOT }}/test
         python -m pytest --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
         python -m pytest --cov
       shell: bash
